@@ -4,7 +4,7 @@
 -- //Description here
 
 -- add functions
-dofile('hangman_functions.lua')
+dofile("hangman_functions.lua")
 
 --START OF PROGRAM
 
@@ -24,7 +24,7 @@ words[8] = "indigo"
 words[9] = "jumping"
 
 words_length = tableLength(words) --size of table
-print(words_length.." words in table")a
+print(words_length.." words in table")
 
 --Test
 gallow_test()
