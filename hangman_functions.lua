@@ -13,13 +13,25 @@ function tableLength(thisTable)
     end
     return counter
 end
-  
-function gallow()
+
+function gallow(num)
+    a = ""
+    b = ""
+    c = " "
+    d = ""
+    e = ""
+    f = ""
+    if num >= 1 then a = "0" end
+    if num >= 2 then b = "|" end
+    if num >= 3 then c = "/" end
+    if num >= 4 then d = "\\" end
+    if num >= 5 then e = "/" end
+    if num == 6 then f = "\\" end
     print("    ___________")
     print("    |         |")
-    print("    |          ")
-    print("    |          ")
-    print("    |          ")
+    print("    |         "..a)
+    print("    |        "..c..b..d)
+    print("    |        "..e.." "..f)
     print("    |          ")
     print("    |          ")
     print("    |          ")
