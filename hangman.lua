@@ -29,17 +29,4 @@ words_length = tableLength(words) --size of table
 print(words_length)
 
 --Test
-print("gallow(0):")
-gallow(0)
-print("gallow(1):")
-gallow(1)
-print("gallow(2):")
-gallow(2)
-print("gallow(3):")
-gallow(3)
-print("gallow(4):")
-gallow(4)
-print("gallow(5):")
-gallow(5)
-print("gallow(6):")
-gallow(6)
+gallow_test()
