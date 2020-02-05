@@ -3,15 +3,14 @@
 --File: "hangman_functions.lua"
 -- //Description here
 
-
 function tableLength(thisTable)
   --this function was found at the following url
-    --https://www.quora.com/How-do-I-get-the-number-of-elements-in-an-array-with-Lua
-    counter = 0
-    for each in pairs(thisTable) do
-      counter = counter+1
-    end
-    return counter
+  --https://www.quora.com/How-do-I-get-the-number-of-elements-in-an-array-with-Lua
+  counter = 0
+  for each in pairs(thisTable) do
+    counter = counter+1
+  end
+  return counter
 end
 
 function gallow(num)
@@ -21,7 +20,7 @@ function gallow(num)
   d = ""
   e = ""
   f = ""
-  if num >= 1 then a = "0" end
+  if num >= 1 then a = "O" end
   if num >= 2 then b = "|" end
   if num >= 3 then c = "/" end
   if num >= 4 then d = "\\" end
@@ -38,21 +37,12 @@ function gallow(num)
   print("    |")
   print("    |")
   print("____|____")
+  print()
 end
 
 function gallow_test()
-  print("gallow(0):")
-  gallow(0)
-  print("gallow(1):")
-  gallow(1)
-  print("gallow(2):")
-  gallow(2)
-  print("gallow(3):")
-  gallow(3)
-  print("gallow(4):")
-  gallow(4)
-  print("gallow(5):")
-  gallow(5)
-  print("gallow(6):")
-  gallow(6)
+  for i = 0, 6 do
+    print("gallow("..i.."):")
+    gallow(i)
+  end 
 end
