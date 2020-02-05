@@ -1,2 +1,2 @@
 # hangman
-csci324
+common project for csci324
