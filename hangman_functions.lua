@@ -20,12 +20,18 @@ function gallow(num)
   d = ""
   e = ""
   f = ""
+
+  if num < 5 then print("You have "..6-num.." attempts left")
   if num >= 1 then a = "O" end
   if num >= 2 then b = "|" end
   if num >= 3 then c = "/" end
   if num >= 4 then d = "\\" end
   if num >= 5 then e = "/" end
-  if num == 6 then f = "\\" end
+  if num == 5 then print("You have 1 attempt left")
+  if num == 6 then
+      f = "\\"
+      print("Sorry, you lost!")
+  end
   print("    ___________")
   print("    |         |")
   print("    |         "..a)
@@ -44,5 +50,5 @@ function gallow_test()
   for i = 0, 6 do
     print("gallow("..i.."):")
     gallow(i)
-  end 
+  end
 end
