@@ -40,19 +40,29 @@ print(words[random_index])
 word_length = string.len( words[random_index] )
 print("Word size is "..word_length)
 
---Since we have word length, can't we just make a for loop? Would that be it, yeah
--- but we are going to need some if's and booleans (probably) to keep track of what
---letters have been correctly guessed to reveal them
+--Since we have word length, can't we just make a for loop? Would that be it,
+--yeah but we are going to need some if's and booleans (probably) to keep track
+--of what letters have been correctly guessed to reveal them
 --this is gonna need to be a function i think
 word_guessed = {}
 for i = 0, word_length do --this initalized them to false
     word_guessed[i] = false
 end
+
+--I think this loop needs to go into the gallow function, that way
+--we print the gallow and the current word guessing
 for i = 0, word_length do
-    if word_guessed[i] then --the ~means ! i think
+    if word_guessed[i] then
         --here we would print the ith character
     else
-        io.write(" _ ")
+        io.write(" _")
     end
 end
 print()
+
+--TODO:
+-- import dictionary file into table (after we make sure it works on 10 words)
+-- write user guessing
+-- check letter against each character
+-- change letters to all upper case?
+-- show letters guessed when gallow printed
