@@ -12,19 +12,22 @@ print("Hello user, welcome to hangman")
 
 words = {}  --table to hold all words
 --will eventually use "dictionary.txt" contents
-words[0] = "apple"
-words[1] = "banana"
-words[2] = "cactus"
-words[3] = "dog"
-words[4] = "empty"
-words[5] = "food"
-words[6] = "google"
-words[7] = "hello"
-words[8] = "indigo"
-words[9] = "jumping"
+words[1] = "apple"
+words[2] = "banana"
+words[3] = "cactus"
+words[4] = "dog"
+words[5] = "empty"
+words[6] = "food"
+words[7] = "google"
+words[8] = "hello"
+words[9] = "indigo"
+words[10] = "jumping"
 
 words_length = tableLength(words) --size of table
 print(words_length.." words in table")
 
---Test
-gallow_test()
+math.randomseed(os.time()) --need to run first
+random_word = math.random(1,words_length)
+
+print("Randomly picked "..random_word)
+print(words[random_word])
