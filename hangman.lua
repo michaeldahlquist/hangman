@@ -39,3 +39,20 @@ print(words[random_index])
 --calculates the word_length
 word_length = string.len( words[random_index] )
 print("Word size is "..word_length)
+
+--Since we have word length, can't we just make a for loop? Would that be it, yeah
+-- but we are going to need some if's and booleans (probably) to keep track of what
+--letters have been correctly guessed to reveal them
+--this is gonna need to be a function i think
+word_guessed = {}
+for i = 0, word_length do --this initalized them to false
+    word_guessed[i] = false
+end
+for i = 0, word_length do
+    if word_guessed[i] then --the ~means ! i think
+        --here we would print the ith character
+    else
+        io.write(" _ ")
+    end
+end
+print()
