@@ -1,7 +1,9 @@
---Michael Dahlquist & Kristen Qako
---csci324 - spring2020
---File: "hangman_functions.lua"
--- //Description here
+--[[
+Names: Michael Dahlquist & Kristen Qako
+Class: csci324 - spring2020
+File: "hangman_functions.lua"
+Program Description: These are the functions for the game of hangman.
+--]]
 
 function tableLength(thisTable)
   --this function was found at the following url

@@ -1,18 +1,22 @@
---Michael Dahlquist & Kristen Qako
---csci324 - spring2020
---File: "hangman.lua"
--- //Description here
+--[[
+Names: Michael Dahlquist & Kristen Qako
+Class: csci324 - spring2020
+File: "hangman.lua"
+Program Description: This is the game of hangman.
+--]]
 
--- add functions
+-- add functions from hangman_functions.lua
 dofile("hangman_functions.lua")
 
---START OF PROGRAM
-
+--START HANGMAN
 print("Hello user, welcome to hangman")
 
 --This section creates a table and files 10 words into table
 words = {}  --table to hold all words
 --will eventually use "dictionary.txt" contents
+
+-- TODO: Write function to read dictionary.txt
+
 words[1] = "apple"
 words[2] = "banana"
 words[3] = "cactus"
@@ -40,17 +44,23 @@ print(words[random_index])
 word_length = string.len( words[random_index] )
 print("Word size is "..word_length)
 
---Since we have word length, can't we just make a for loop? Would that be it,
---yeah but we are going to need some if's and booleans (probably) to keep track
---of what letters have been correctly guessed to reveal them
---this is gonna need to be a function i think
+--[[
+Since we have word length, can't we just make a for loop? Would that be it,
+yeah but we are going to need some if's and booleans (probably) to keep track
+of what letters have been correctly guessed to reveal them
+this is gonna need to be a function i think
+
+Also this is how you block comment
+
+--]]
+
 word_guessed = {} --better name for this variable??
 for i = 1, word_length do --this initalized them to false
     word_guessed[i] = false
 end
 
 --I made the line printing a function that calls gallow with the attempt
---We could probably make a function that is the game and just have it in a loop
+--We could probably make a game function and just have the game in a loop
 guess(words[random_index], word_guessed, 0) -- (word, word_guessed, attempt)
 
 --TODO:
