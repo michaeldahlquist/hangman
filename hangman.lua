@@ -44,21 +44,14 @@ print("Word size is "..word_length)
 --yeah but we are going to need some if's and booleans (probably) to keep track
 --of what letters have been correctly guessed to reveal them
 --this is gonna need to be a function i think
-word_guessed = {}
-for i = 0, word_length do --this initalized them to false
+word_guessed = {} --better name for this variable??
+for i = 1, word_length do --this initalized them to false
     word_guessed[i] = false
 end
 
---I think this loop needs to go into the gallow function, that way
---we print the gallow and the current word guessing
-for i = 0, word_length do
-    if word_guessed[i] then
-        --here we would print the ith character
-    else
-        io.write(" _")
-    end
-end
-print()
+--I made the line printing a function that calls gallow with the attempt
+--We could probably make a function that is the game and just have it in a loop
+guess(words[random_index], word_guessed, 0) -- (word, word_guessed, attempt)
 
 --TODO:
 -- import dictionary file into table (after we make sure it works on 10 words)

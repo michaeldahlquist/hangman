@@ -43,7 +43,6 @@ function gallow(num)
   print("    |")
   print("    |")
   print("____|____")
-  print()
 end
 
 function gallow_test()
@@ -51,4 +50,17 @@ function gallow_test()
     print("gallow("..i.."):")
     gallow(i)
   end
+end
+
+function guess(word, word_guessed, attempt)
+    gallow(attempt)
+    io.write("Your word is:\n")
+    for i = 1, string.len(word) do
+        if word_guessed[i] then
+            print(word.." ")--here we would print the ith character
+        else
+            io.write("_ ")
+        end
+    end
+    print()
 end
