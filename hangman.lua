@@ -90,7 +90,7 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do
 
     io.write("Please guess a letter: ")
     ch = io.read(2);
-    ch = string.sub(ch,1,1)
+    ch = string.upper( string.sub(ch,1,1) )
     char_found = false;
     char_unique = false;
     while not char_unique do
@@ -106,7 +106,7 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do
     end
     for i = 1, string.len(word) do
         print("Checking "..i)
-        if string.upper(string.sub(word,i,i)) == string.upper(ch) then --compares character in word to user input
+        if string.upper(string.sub(word,i,i)) == ch then --compares character in word to user input
             if show_letter[i] then
                 char_found = true
             else
@@ -118,7 +118,7 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do
         end
     end
     if not char_found then
-        letters_guessed[wrong_ct] = string.upper(ch)
+        letters_guessed[wrong_ct] = ch
         wrong_ct = wrong_ct + 1
     end
     print() -- (word, word_guessed, attempt)
