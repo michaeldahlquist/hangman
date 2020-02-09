@@ -105,12 +105,10 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do
         end
     end
     for i = 1, string.len(word) do
-        print("Checking "..i)
         if string.upper(string.sub(word,i,i)) == ch then --compares character in word to user input
             if show_letter[i] then
                 char_found = true
             else
-                print("Matched")
                 char_found = true
                 show_letter[i] = true;
                 correct_ct = correct_ct + 1
