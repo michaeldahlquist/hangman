@@ -54,18 +54,87 @@ Also this is how you block comment
 
 --]]
 
-word_guessed = {} --better name for this variable??
+show_letter = {} --better name for this variable??
 for i = 1, word_length do --this initalized them to false
-    word_guessed[i] = false
+    show_letter[i] = false
+end
+
+letters_guessed = {}
+
+wrong_ct = 0
+correct_ct = 0
+word = words[random_index]
+
+function print_wrong(letters_guessed, wrong_ct)
+    print("Currently guessed incorrect letters:")
+    for i = 0, wrong_ct-1 do
+        io.write(letters_guessed[i].." ")
+    end
 end
 
 --I made the line printing a function that calls gallow with the attempt
 --We could probably make a game function and just have the game in a loop
-guess(words[random_index], word_guessed, 0) -- (word, word_guessed, attempt)
+while (wrong_ct < 6) and (correct_ct < string.len(word)) do
+    gallow(wrong_ct)
+    io.write("Your word is:\n")
+    for i = 1, string.len(word) do
+        if show_letter[i] then
+            io.write(string.sub(word,i,i).." ")--here we would print the ith character
+        else
+            io.write("_ ")
+        end
+    end
+    print()
+    print_wrong(letters_guessed, wrong_ct)
+    print()
+
+    io.write("Please guess a letter: ")
+    ch = io.read(2);
+    ch = string.sub(ch,1,1)
+    char_found = false;
+    char_unique = false;
+    while not char_unique do
+        char_unique = true
+        for k = 0, wrong_ct do
+            if letters_guessed[k] == ch then
+                io.write("You already guessed that, input a new letter:")
+                ch = io.read(2);
+                ch = string.sub(ch,1,1)
+                char_unique = false
+            end
+        end
+    end
+    for i = 1, string.len(word) do
+        print("Checking "..i)
+        if string.upper(string.sub(word,i,i)) == string.upper(ch) then --compares character in word to user input
+            if show_letter[i] then
+                char_found = true
+            else
+                print("Matched")
+                char_found = true
+                show_letter[i] = true;
+                correct_ct = correct_ct + 1
+            end
+        end
+    end
+    if not char_found then
+        letters_guessed[wrong_ct] = string.upper(ch)
+        wrong_ct = wrong_ct + 1
+    end
+    print() -- (word, word_guessed, attempt)
+end
+
+gallow(wrong_ct)
+io.write("Your word is:\n")
+for i = 1, string.len(word) do
+    if show_letter[i] or wrong_ct == 6 then
+        io.write(string.sub(word,i,i).." ")--here we would print the ith character
+    else
+        io.write("_ ")
+    end
+end
+print_wrong(letters_guessed, wrong_ct)
+print()
 
 --TODO:
 -- import dictionary file into table (after we make sure it works on 10 words)
--- write user guessing
--- check letter against each character
--- change letters to all upper case?
--- show letters guessed when gallow printed
