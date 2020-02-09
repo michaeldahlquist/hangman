@@ -30,10 +30,7 @@ function gallow(num)
   if num >= 4 then d = "\\" end
   if num >= 5 then e = "/" end
   if num == 5 then print("You have 1 attempt left") end
-  if num == 6 then
-      f = "\\"
-      print("Sorry, you lost!")
-  end
+  if num == 6 then f = "\\" end
   print("    ___________")
   print("    |         |")
   print("    |         "..a)

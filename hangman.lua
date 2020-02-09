@@ -66,7 +66,7 @@ correct_ct = 0
 word = words[random_index]
 
 function print_wrong(letters_guessed, wrong_ct)
-    print("Currently guessed incorrect letters:")
+    print("Guessed incorrect letters:")
     for i = 0, wrong_ct-1 do
         io.write(letters_guessed[i].." ")
     end
@@ -99,7 +99,7 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do
             if letters_guessed[k] == ch then
                 io.write("You already guessed that, input a new letter:")
                 ch = io.read(2);
-                ch = string.sub(ch,1,1)
+                ch = string.upper( string.sub(ch,1,1) )
                 char_unique = false
             end
         end
@@ -131,7 +131,13 @@ for i = 1, string.len(word) do
         io.write("_ ")
     end
 end
+print()
 print_wrong(letters_guessed, wrong_ct)
+print()
+print()
+if wrong_ct < 6 then print("Congratulations, you guessed the word!")
+else print("Sorry, you lost!")
+end
 print()
 
 --TODO:
