@@ -73,3 +73,20 @@ function gallow_test()
     gallow(i)
   end
 end
+
+function test_words()
+--test_words returns a table of 10 words, and the count (10)
+  words = {}
+  words[1] = "apple"
+  words[2] = "banana"
+  words[3] = "cactus"
+  words[4] = "dog"
+  words[5] = "empty"
+  words[6] = "food"
+  words[7] = "google"
+  words[8] = "hello"
+  words[9] = "indigo"
+  words[10] = "jumping"
+  count = table_size(words)
+  return words, count
+end

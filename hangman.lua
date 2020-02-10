@@ -21,18 +21,7 @@ print("Hello user, welcome to hangman")
 --This section creates a table with every word in dictionary.txt as elements.
 file_name = "dictionary.txt"
 words, words_length = get_lines(file_name)
---[[]
-words[1] = "apple"
-words[2] = "banana"
-words[3] = "cactus"
-words[4] = "dog"
-words[5] = "empty"
-words[6] = "food"
-words[7] = "google"
-words[8] = "hello"
-words[9] = "indigo"
-words[10] = "jumping"
-]]--
+
 
 --This shows the user the size of the table
 print(words_length.." words in table")
