@@ -2,17 +2,25 @@
 Names: Michael Dahlquist & Kristen Qako
 Class: csci324 - spring2020
 File: "hangman.lua"
-Program Description: This is the game of hangman.
+Program Description: This is the game of hangman. Users will guess letters in an
+                     attempt to discover all letters of hidden word. Which each
+                     failed attempt, a man will gain a limp until he is a fully
+                     hanged from the gallow, signifying the end of the game.
+                     Repeat guesses will not count against the man's demise.
+                     Good luck.
+                     --Is this too dramatics lmao
 --]]
 
 -- add functions from hangman_functions.lua
 dofile("hangman_functions.lua")
 
 --START HANGMAN
+
 print("Hello user, welcome to hangman")
 
 --This section creates a table with every word in dictionary.txt as elements.
-words, words_length = getwords("dictionary.txt")
+file_name = "dictionary.txt"
+words, words_length = get_lines(file_name)
 --[[]
 words[1] = "apple"
 words[2] = "banana"
@@ -51,7 +59,8 @@ Also this is how you block comment
 
 --]]
 
---This initializes each letter of the word to false as a way to test if the user inputs a correct letter later in the code.
+--This initializes each letter of the word to false as a way to test if the
+--user inputs a correct letter later in the code.
 show_letter = {} --better name for this variable??
 for i = 1, word_length do --this initalized them to false
     show_letter[i] = false
@@ -64,7 +73,8 @@ wrong_ct = 0 --number of times user guessed wrong
 correct_ct = 0--number of times user guessed correctly
 word = words[random_index]
 
---This function prints out the players incorrect letter guesses. It is in order of appearance.
+--This function prints out the players incorrect letter guesses.
+--It is in order of appearance.
 function print_wrong(letters_guessed, wrong_ct)
     print("Guessed incorrect letters:")
     for i = 0, wrong_ct-1 do
@@ -76,7 +86,8 @@ end
 --We could probably make a game function and just have the game in a loop
 
 --This function is what runs the game.
-while (wrong_ct < 6) and (correct_ct < string.len(word)) do --this while loop     runs until wrong_ct exceeds 6 or the user gets the word.
+while (wrong_ct < 6) and (correct_ct < string.len(word)) do
+    --this while loop runs until the man in hanged or the user gets the word.
     gallow(wrong_ct)
     io.write("Your word is:\n")
     for i = 1, string.len(word) do --prints underscore for hidden letters and
@@ -90,8 +101,9 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do --this while loop   
     print_wrong(letters_guessed, wrong_ct)
     print()
 
-  --This section of code takes users guesses and checks whether a wrong input has been guessed before.
-  --We decided that letters that have been shown should not display that output and we just continue to show the current game.
+  --This section of code takes users guesses and checks whether a wrong input
+  --has been guessed before. We decided that letters that have been shown
+  --should not display that output and we just continue to show the current game.
     io.write("Please guess a letter: ")
     ch = io.read(2); --reads the input
     ch = string.upper(string.sub(ch,1,1) )
@@ -108,9 +120,12 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do --this while loop   
             end
         end
     end
- --This section of code checks whether the user input is correct. If it is correct, we make that index of the word true, then increment the number of correctly counted words.
+ --This section of code checks whether the user input is correct. If it is
+ --correct, we make that index of the word true, then increment the number of
+ --correctly counted words.
     for i = 1, string.len(word) do
-        if string.upper(string.sub(word,i,i)) == ch then --compares letter in word to the users guess
+        --compares letter in word to the users guess
+        if string.upper(string.sub(word,i,i)) == ch then
             if show_letter[i] then
                 char_found = true
             else
@@ -125,7 +140,7 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do --this while loop   
         letters_guessed[wrong_ct] = ch
         wrong_ct = wrong_ct + 1
     end
-    print() -- (word, word_guessed, attempt)
+    print()
 end
 
 gallow(wrong_ct)
@@ -146,5 +161,13 @@ else print("Sorry, you lost! The word was: ", word)
 end
 print()
 
+--END HANGMAN
+
 --TODO:
--- import dictionary file into table (after we make sure it works on 10 words)
+--Add the hangman game into a function
+
+--BONUS TODO:
+--Have game repeat in a while loop so user can keep underplaying
+--If this, count how many times won, how many times lost and return at the end
+--Improve the hang guy
+--Maybe do GUI, might help decide on the big project?
