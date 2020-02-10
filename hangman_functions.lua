@@ -5,6 +5,8 @@ File: "hangman_functions.lua"
 Program Description: These are the functions for the game of hangman.
 --]]
 
+--A portion of this code was inspired by https://stackoverflow.com/questions/11201262/how-to-read-data-from-a-file-in-lua
+--This section of the code reads through dictionary.txt and inserts all of the words into a table
 function getwords(file_name)
     new_table = {}
     count = 0
@@ -29,6 +31,7 @@ function tableLength(thisTable)
   return counter
 end
 
+--These are the graphics for the game. It prints the remaining number of moves as well as the gallow. It is updated as the user makes guesses in hangman.lua
 function gallow(num)
   a = ""
   b = ""
