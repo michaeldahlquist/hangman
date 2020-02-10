@@ -26,7 +26,6 @@ words[9] = "indigo"
 words[10] = "jumping"
 ]]--
 
-print(words_length.." words in table")
 print(count.." words in table")
 
 --Find a random index of the table, called "random_word"
