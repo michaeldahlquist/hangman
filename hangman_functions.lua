@@ -11,13 +11,12 @@ function getwords(file_name)
     local file = io.open(file_name, "rb")
     for line in io.lines(file_name) do
         count = count + 1
-        new_table[count] = line
+        new_table[count] = string.sub(line, 1, string.len(line)-1)
     end
     file:close()
     return new_table
 
 end
-
 
 
 function tableLength(thisTable)
