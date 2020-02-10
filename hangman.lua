@@ -12,7 +12,7 @@ dofile("hangman_functions.lua")
 print("Hello user, welcome to hangman")
 
 --This section creates a table and files 10 words into table
-words = getwords("dictionary.txt")
+words, count = getwords("dictionary.txt")
 --[[]
 words[1] = "apple"
 words[2] = "banana"
@@ -26,13 +26,12 @@ words[9] = "indigo"
 words[10] = "jumping"
 ]]--
 
---Calculate the size of the table
-table_size = tableLength(words) --size of table
-print(table_size.." words in table")
+print(words_length.." words in table")
+print(count.." words in table")
 
 --Find a random index of the table, called "random_word"
 math.randomseed(os.time()) --need to run first
-random_index = math.random(1,table_size)
+random_index = math.random(1,words_length)
 
 --prints random index and the word
 print("Randomly picked "..random_index)

@@ -14,7 +14,7 @@ function getwords(file_name)
         new_table[count] = string.sub(line, 1, string.len(line)-1)
     end
     file:close()
-    return new_table
+    return new_table, count
 
 end
 
