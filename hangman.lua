@@ -12,11 +12,8 @@ dofile("hangman_functions.lua")
 print("Hello user, welcome to hangman")
 
 --This section creates a table and files 10 words into table
-words = {}  --table to hold all words
---will eventually use "dictionary.txt" contents
-
--- TODO: Write function to read dictionary.txt
-
+words = getwords("dictionary.txt")
+--[[]
 words[1] = "apple"
 words[2] = "banana"
 words[3] = "cactus"
@@ -27,6 +24,7 @@ words[7] = "google"
 words[8] = "hello"
 words[9] = "indigo"
 words[10] = "jumping"
+]]--
 
 --Calculate the size of the table
 table_size = tableLength(words) --size of table
@@ -90,7 +88,7 @@ while (wrong_ct < 6) and (correct_ct < string.len(word)) do
 
     io.write("Please guess a letter: ")
     ch = io.read(2);
-    ch = string.upper( string.sub(ch,1,1) )
+    ch = string.upper(string.sub(ch,1,1) )
     char_found = false;
     char_unique = false;
     while not char_unique do

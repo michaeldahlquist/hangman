@@ -5,6 +5,21 @@ File: "hangman_functions.lua"
 Program Description: These are the functions for the game of hangman.
 --]]
 
+function getwords(file_name)
+    new_table = {}
+    count = 0
+    local file = io.open(file_name, "rb")
+    for line in io.lines(file_name) do
+        count = count + 1
+        new_table[count] = line
+    end
+    file:close()
+    return new_table
+
+end
+
+
+
 function tableLength(thisTable)
   --this function was found at the following url
   --https://www.quora.com/How-do-I-get-the-number-of-elements-in-an-array-with-Lua
