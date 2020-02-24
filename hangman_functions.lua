@@ -24,7 +24,6 @@ function get_lines(file_name)
     return new_table
 end
 
-
 function table_size(this_table)
 --this function was found at the following url:
 --https://www.quora.com/How-do-I-get-the-number-of-elements-in-an-array-with-Lua
@@ -38,9 +37,9 @@ end
 
 function gallow(num)
 --These are the graphics for the game. It prints the remaining number of moves
---as well as the gallow. It is updated as the user makes guesses in hangman.lua
+--as well as the gallow. It is updated as the user makes incorrect guesses
     for i = 1, 25 do
-        print()
+        print() --add blank lines to keep the following at the bottom of shell
     end
     a = ""
     b = ""
@@ -69,14 +68,6 @@ function gallow(num)
     print("____|____")
 end
 
-function gallow_test()
---gallow_test(num) prints all prossible attempts leves (0-6)
-    for i = 0, 6 do
-        print("gallow("..i.."):")
-        gallow(i)
-    end
-end
-
 function print_wrong(letters_guessed, wrong_ct)
 --This function prints out the players incorrect letter guesses.
 --It is in order of appearance.
@@ -93,6 +84,7 @@ function hangman (words)
 --at the sixth incorrect guess. This function returns two boolean values,
 --whether the user wants to play_again, or if the game_won.
 
+    --START THE GAME OF HANGMAN:
 
     --calculate size of table
     words_length = table_size(words)
@@ -222,7 +214,9 @@ function hangman (words)
     end
     print()
 
-    --END HANGMAN
+    --END THE GAME OF HANGMAN
+
+    --PROMPT IF THE GAME SHOULD BE PLAYED AGAIN
 
     io.write("Would you like to play another round? Yes or No: ")
     ch = io.read("*line")
