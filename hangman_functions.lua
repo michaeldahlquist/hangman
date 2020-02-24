@@ -214,13 +214,22 @@ function hangman (words)
     --END THE GAME OF HANGMAN
 
     --Here we prompt if the game should be played again
-    io.write("Would you like to play another round? Yes or No: ")
-    ch = io.read("*line")
-    ch = string.upper( string.sub(ch,1,1) )
-    if ch == 'Y' then
-        play_again = true
-    else
-        play_again = false
+    valid_response = false
+    while not valid_response do
+        io.write("Would you like to play another round? Yes or No: ")
+        ch = io.read("*line")
+        ch = string.upper( string.sub(ch,1,1) )
+        --only care about the first letter of yes, yeah, no, nah, quit, etc.
+        if ch == 'Y' then
+            play_again = true
+            valid_response = true
+        elseif ch == 'N' or ch == 'Q' then
+            play_again = false
+            valid_response = true
+        else --if did not start with y or n, prompt again
+            valid_response = false
+            io.write("Invalid response. ")
+        end
     end
     return play_again, game_won
 end
