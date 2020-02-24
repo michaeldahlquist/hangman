@@ -96,19 +96,23 @@ function hangman (words)
     word = words[random_index]
     word_length = string.len( word )
 
-    --This initializes each letter of the word to false as a way to test if the
-    --user inputs a correct letter later in the code.
-    show_letter = {} --better name for this variable??
-    for i = 1, word_length do --this initalized them to false
-        show_letter[i] = false
-    end
-
     --Empty table that will store the users guesses.
     letters_guessed = {}
 
     wrong_ct = 0 --number of times user guessed wrong
     correct_ct = 0--number of times user guessed correctly
     word = words[random_index]
+
+    --This initializes each letter of the word to false as a way to test if the
+    --user inputs a correct letter later in the code.
+    show_letter = {} --better name for this variable??
+    for i = 1, word_length do --this initalized them to false
+        show_letter[i] = false
+        if string.sub(word,i,i) == "\'" then
+            show_letter[i] = true
+        end
+    end
+
 
     --I made the line printing a function that calls gallow with the attempt
     --We could probably make a game function and just have the game in a loop
