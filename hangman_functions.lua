@@ -90,12 +90,11 @@ function hangman (words)
     words_length = table_size(words)
 
     --This section finds a random index of the table, meaning the word is randomly picked.
-    math.randomseed(os.time()) --need to run first
+    math.randomseed(os.time()) --initalize random seed with os.time()
     random_index = math.random(1,words_length)
     word = words[random_index]
-    word_length = string.len( word )
 
-    --Empty table that will store the users guesses.
+    --Declare an empty table that will store the users guesses.
     letters_guessed = {}
 
     wrong_ct = 0 --number of times user guessed wrong
@@ -105,43 +104,40 @@ function hangman (words)
     --This initializes each letter of the word to false as a way to test if the
     --user inputs a correct letter later in the code.
     show_letter = {} --better name for this variable??
-    for i = 1, word_length do --this initalized them to false
+    for i = 1, string.len(word) do --this initalized them to false
         show_letter[i] = false
         if string.sub(word,i,i) == "\'" then
             show_letter[i] = true
         end
     end
 
-
-    --I made the line printing a function that calls gallow with the attempt
-    --We could probably make a game function and just have the game in a loop
-
-    --This function is what runs the game.
-
-    while (wrong_ct < 6) and (correct_ct < string.len(word)) do
-        --this while loop runs until the man in hanged or the user gets the word.
+    --This loop is what runs guessing portion of the game
+    while wrong_ct < 6 and correct_ct < string.len(word) do
+    --this while loop runs until the man is hanged or the user gets the word.
         gallow(wrong_ct)
         io.write("Your word is:\n")
         for i = 1, string.len(word) do --prints underscore for hidden letters and
             if show_letter[i] then     --prints the letters if guessed correctly
                 io.write(string.sub(word,i,i).." ")--we would print the ith character
             else
-                io.write("_ ")
+                io.write("_ ") --print underscore's for each letter not guessed.
             end
         end
         print()
         print_wrong(letters_guessed, wrong_ct)
         print()
 
-      --This section of code takes users guesses and checks whether a wrong input
-      --has been guessed before. We decided that letters that have been shown
-      --should not display that output and we just continue to show the current game.
+        --This section of code takes users guesses and checks whether a wrong input
+        --has been guessed before. We decided that letters that have been shown
+        --should not display that output and we just continue to show the current game.
         io.write("Please guess a letter: ")
-        ch = io.read("*line"); --reads the input
-        ch = string.upper(string.sub(ch,1,1) )
+        ch = io.read("*line"); --reads the entire line for inital guess
+        ch = string.upper(string.sub(ch,1,1) ) --take upper of first character
         char_found = false;
         char_unique = false;
         while not char_unique do
+        --this loop checks to make sure that this guess is valid...
+        --i.e., not already guessed, not a space
             char_unique = true
             for k = 0, wrong_ct do -- This loop checks if already incorrect guess
                 if letters_guessed[k] == ch then --checks if letter has been guessed
@@ -151,7 +147,7 @@ function hangman (words)
                     char_unique = false
                 end
             end
-            for i = 1, word_length do -- This loop checks if already correct guess
+            for i = 1, string.len(word) do -- This loop checks if already correct guess
                 if string.upper(string.sub(word,i,i)) == ch and show_letter[i] then
                     io.write("That letter is already in the word, input new letter: ")
                     ch = io.read("*line");
@@ -159,9 +155,10 @@ function hangman (words)
                     char_unique = false
                 end
             end
-            if ch == ' ' or ch == '\0' then
-                --This check for space, ??check for enter??
-                print("THIS IS A SPACE OR ENTER")
+            if ch == '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8'
+                or '9' or '0' or ' ' or "\'" then
+                --This check for space, apostrophe, or number
+                -- Still need to if just hits enter
                 io.write("Invalid character, input new letter: ")
                 ch = io.read("*line");
                 ch = string.upper( string.sub(ch,1,1) )
@@ -178,7 +175,7 @@ function hangman (words)
                     char_found = true
                 else
                     char_found = true
-                    show_letter[i] = true;
+                    show_letter[i] = true
                     correct_ct = correct_ct + 1
                 end
             end
@@ -189,7 +186,7 @@ function hangman (words)
             wrong_ct = wrong_ct + 1
         end
         print()
-    end
+    end --end while loop
 
     gallow(wrong_ct)
     io.write("Your word is:\n")
@@ -216,8 +213,7 @@ function hangman (words)
 
     --END THE GAME OF HANGMAN
 
-    --PROMPT IF THE GAME SHOULD BE PLAYED AGAIN
-
+    --Here we prompt if the game should be played again
     io.write("Would you like to play another round? Yes or No: ")
     ch = io.read("*line")
     ch = string.upper( string.sub(ch,1,1) )
