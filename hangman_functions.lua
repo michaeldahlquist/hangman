@@ -39,7 +39,7 @@ end
 function gallow(num)
 --These are the graphics for the game. It prints the remaining number of moves
 --as well as the gallow. It is updated as the user makes guesses in hangman.lua
-    for i = 1, 20 do
+    for i = 1, 25 do
         print()
     end
     a = ""
