@@ -155,8 +155,9 @@ function hangman (words)
                     char_unique = false
                 end
             end
-            if ch == '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8'
-                or '9' or '0' or ' ' or "\'" then
+            if ch == '1' or ch == '2' or ch == '3' or ch == '4' or ch == '5' or
+               ch == '6' or ch == '7' or ch == '8' or ch == '9' or ch == '0' or
+               ch == ' ' or ch == "\'" then
                 --This check for space, apostrophe, or number
                 -- Still need to if just hits enter
                 io.write("Invalid character, input new letter: ")
