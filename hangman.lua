@@ -15,48 +15,36 @@ Program Description: This is the game of hangman. Users will guess letters in an
 dofile("hangman_functions.lua")
 
 --START HANGMAN
-
 print("Hello user, welcome to hangman")
 
 --This section creates a table with every word in dictionary.txt as elements.
 file_name = "dictionary.txt"
 words = get_lines(file_name) --returns words{table}
 
-
+--Initalize and play game:
 play_game = true
 won_count = 0
+lose_count = 0
 while play_game do
     play_game, game_won = hangman(words)
     if game_won then
         won_count = won_count + 1
+    else
+        lose_count = lose_count + 1
     end
 end
 
 if won_count < 1 then
     print ("You tried... 😂")
 else
-    print("You won "..won_count.." games!")
+    print("You won "..won_count.." and lost "..lose_count.." games!")
+    if lose_count < won_count then
+        print("You did a great job!")
+    end
 end
 
---[[
-Since we have word length, can't we just make a for loop? Would that be it,
-yeah but we are going to need some if's and booleans (probably) to keep track
-of what letters have been correctly guessed to reveal them
-this is gonna need to be a function i think
-
-Also this is how you block comment
-
---]]
-
-
-
-
-
---TODO:
---Add the hangman game into a function
 
 --BONUS TODO:
---Have game repeat in a while loop so user can keep underplaying
---If this, count how many times won, how many times lost and return at the end
+
 --Improve the hang guy
 --Maybe do GUI, might help decide on the big project?

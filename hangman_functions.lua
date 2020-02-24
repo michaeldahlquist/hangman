@@ -26,20 +26,20 @@ end
 
 
 function table_size(this_table)
-  --this function was found at the following url:
-  --https://www.quora.com/How-do-I-get-the-number-of-elements-in-an-array-with-Lua
-  --table_size returns the count of all of the items in thisTable
-  counter = 0
-  for each in pairs(this_table) do
-    counter = counter+1
-  end
-  return counter
+--this function was found at the following url:
+--https://www.quora.com/How-do-I-get-the-number-of-elements-in-an-array-with-Lua
+--table_size returns the count of all of the items in thisTable
+    counter = 0
+    for each in pairs(this_table) do
+        counter = counter+1
+    end
+    return counter
 end
 
 function gallow(num)
 --These are the graphics for the game. It prints the remaining number of moves
 --as well as the gallow. It is updated as the user makes guesses in hangman.lua
-    for i = 1, 10 do
+    for i = 1, 20 do
         print()
     end
     a = ""
@@ -71,10 +71,10 @@ end
 
 function gallow_test()
 --gallow_test(num) prints all prossible attempts leves (0-6)
-  for i = 0, 6 do
-    print("gallow("..i.."):")
-    gallow(i)
-  end
+    for i = 0, 6 do
+        print("gallow("..i.."):")
+        gallow(i)
+    end
 end
 
 function print_wrong(letters_guessed, wrong_ct)
@@ -87,6 +87,13 @@ function print_wrong(letters_guessed, wrong_ct)
 end
 
 function hangman (words)
+--This function plays the entrie game of hangman. It take in one parameter
+--that is a table of words, indexed 1 through n number of words. A random
+--word is selected and the user must guess the letters in the words, losing
+--at the sixth incorrect guess. This function returns two boolean values,
+--whether the user wants to play_again, or if the game_won.
+
+
     --calculate size of table
     words_length = table_size(words)
 
