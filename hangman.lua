@@ -8,7 +8,6 @@ Program Description: This is the game of hangman. Users will guess letters in an
                      hanged from the gallow, signifying the end of the game.
                      Repeat guesses will not count against the man's demise.
                      Good luck.
-                     --Is this too dramatics lmao
 --]]
 
 -- add functions from hangman_functions.lua

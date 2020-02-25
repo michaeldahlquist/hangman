@@ -24,17 +24,6 @@ function get_lines(file_name)
     return new_table
 end
 
-function table_size(this_table)
---this function was found at the following url:
---https://www.quora.com/How-do-I-get-the-number-of-elements-in-an-array-with-Lua
---table_size returns the count of all of the items in thisTable
-    counter = 0
-    for each in pairs(this_table) do
-        counter = counter+1
-    end
-    return counter
-end
-
 function gallow(num)
 --These are the graphics for the game. It prints the remaining number of moves
 --as well as the gallow. It is updated as the user makes incorrect guesses
@@ -78,9 +67,9 @@ function print_wrong(letters_guessed, wrong_ct)
 end
 
 function hangman (words)
---This function plays the entrie game of hangman. It take in one parameter
+--This function plays the entire game of hangman. It take in one parameter
 --that is a table of words, indexed 1 through n number of words. A random
---word is selected and the user must guess the letters in the words, losing
+--word is selected and the user must guess the letters in the word, losing
 --at the sixth incorrect guess. This function returns two boolean values,
 --whether the user wants to play_again, or if the game_won.
 
