@@ -34,13 +34,19 @@ while play_game do
     end
 end
 
-if win_count < 1 then
+print()
+print("Games won:  "..win_count)
+print("Games lost: "..lose_count)
+print()
+
+if win_count < lose_count then
     print ("You tried... 😂")
+elseif win_count == lose_count then
+    print("Ehhh")
+elseif win_count > lose_count then
+    print("You did a great job!")
 else
-    print("You won "..win_count.." and lost "..lose_count.." games!")
-    if lose_count < win_count then
-        print("You did a great job!")
-    end
+    print("Thanks for playing!")
 end
 
 

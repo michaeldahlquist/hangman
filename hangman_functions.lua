@@ -86,12 +86,9 @@ function hangman (words)
 
     --START THE GAME OF HANGMAN:
 
-    --calculate size of table
-    words_length = table_size(words)
-
     --This section finds a random index of the table, meaning the word is randomly picked.
     math.randomseed(os.time()) --initalize random seed with os.time()
-    random_index = math.random(1,words_length)
+    random_index = math.random(1,#words) -- #words => size of words
     word = words[random_index]
 
     --Declare an empty table that will store the users guesses.
