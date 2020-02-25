@@ -14,7 +14,7 @@ Program Description: This is the game of hangman. Users will guess letters in an
 dofile("hangman_functions.lua")
 
 --START HANGMAN
-print("Hello user, welcome to hangman")
+--print("Hello user, welcome to hangman")
 
 --This section creates a table with each word in dictionary.txt as an element
 file_name = "dictionary.txt"
