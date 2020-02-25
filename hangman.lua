@@ -1,7 +1,7 @@
 --[[
 Names: Michael Dahlquist & Kristen Qako
 Class: csci324 - spring2020
-File: "hangman.lua"
+File:  "hangman.lua"
 Program Description: This is the game of hangman. Users will guess letters in an
                      attempt to discover all letters of hidden word. Which each
                      failed attempt, a man will gain a limp until he is a fully
@@ -18,7 +18,7 @@ print("Hello user, welcome to hangman")
 
 --This section creates a table with each word in dictionary.txt as an element
 file_name = "dictionary.txt"
-words = get_lines(file_name) --returns words{table}
+words = get_lines(file_name) --returns table of words to play with
 
 --Initalize and play game:
 play_game = true

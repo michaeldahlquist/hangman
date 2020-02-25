@@ -1,7 +1,7 @@
 --[[
 Names: Michael Dahlquist & Kristen Qako
 Class: csci324 - spring2020
-File: "hangman_functions.lua"
+File:  "hangman_functions.lua"
 Program Description: These are the functions for the game of hangman.
                      This file is ran at the beginning of "hangman.lua" to
                      define all of the functions. Each function is further
