@@ -48,25 +48,7 @@ else
     print("Thanks for playing!")
 end
 
-io.write("Would you like to add any words to "..file_name.." ? : ")
-ans = io.read("*line")
-ans = string.upper( string.sub(ans,1,1) )
-if ans == 'Y' then
-    print("Please enter as many words as you like, seperating them by a new line.")
-    print("To terminate, enter *")
-    add_word = ' '
-    while not (add_word  == '*') do
-        io.write("Word: ")
-        add_word = io.read("*line")
-        add_word = string.sub(add_word, 1, string.len(add_word)-1)
-        words[#words+1] = add_word
-        print(add_word.." added")
-    end
-    --copy replace dictionary.txt with words table
-    print("adding words...")
-else
-    print("Have a good day!")
-end
+add_words_to_file("dict2.txt",words)
 
 
 --BONUS TODO:

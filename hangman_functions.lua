@@ -8,6 +8,47 @@ Program Description: These are the functions for the game of hangman.
                      described within itself.
 --]]
 
+function add_words_to_file(file_name, this_table)
+    io.write("Would you like to add any words to "..file_name.." ? : ")
+    ans = io.read("*line")
+    ans = string.upper( string.sub(ans,1,1) )
+    if ans == 'Y' then
+        print("Please enter as many words as you like, seperating them by a new line.")
+        print("To terminate, enter *")
+        add_word = ' '
+        counter = 1
+        io.write("Word: ")
+        add_word = io.read("*line")
+        while not (add_word  == '*') do
+            counter = counter - 1
+            this_table[counter] = add_word
+            io.write("Word: ")
+            add_word = io.read("*line")
+        end
+    else
+        print("Have a nice day!")
+    end
+    local file = io.open(file_name, "w+")
+    io.output(file)
+    for i = counter, 0 do
+        print("i = "..i)
+        print(this_table[i])
+        io.write(this_table[i]..'\n')
+        print("wrote "..this_table[i])
+    end
+    print(counter)
+    counter = 1
+    for i = 1, #this_table do
+        io.write(this_table[counter]..'\n')
+        counter = counter + 1
+    end
+    print("normal table finished")
+    file:close()
+    print("file closed")
+end
+
+
+
 function get_lines(file_name)
 --A portion of this code was inspired by:
 --https://stackoverflow.com/questions/11201262/how-to-read-data-from-a-file-in-lua
@@ -30,6 +71,7 @@ function gallow(num)
     for i = 1, 25 do
         print() --add blank lines to keep the following at the bottom of shell
     end
+    --os.execute("clear")
     a = ""
     b = ""
     c = " "
