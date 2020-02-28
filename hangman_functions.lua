@@ -15,6 +15,7 @@ function add_words_to_file(file_name, this_table)
     if ans == 'Y' then
         print("Please enter as many words as you like, seperating them by a new line.")
         print("To terminate, enter *")
+
         add_word = ' '
         counter = 1
         io.write("Word: ")
@@ -25,26 +26,23 @@ function add_words_to_file(file_name, this_table)
             io.write("Word: ")
             add_word = io.read("*line")
         end
+
+        local file = io.open(file_name, "w+")
+        io.output(file)
+        for i = 0, counter, -1 do
+            io.write(this_table[i]..'\n')
+        end
+
+        for i = 1, #this_table do
+            io.write(this_table[i]..'\n')
+        end
+        print("normal table finished")
+        file:close()
+        print("file closed")
     else
         print("Have a nice day!")
     end
-    local file = io.open(file_name, "w+")
-    io.output(file)
-    for i = counter, 0 do
-        print("i = "..i)
-        print(this_table[i])
-        io.write(this_table[i]..'\n')
-        print("wrote "..this_table[i])
-    end
-    print(counter)
-    counter = 1
-    for i = 1, #this_table do
-        io.write(this_table[counter]..'\n')
-        counter = counter + 1
-    end
-    print("normal table finished")
-    file:close()
-    print("file closed")
+    
 end
 
 
@@ -189,7 +187,9 @@ function hangman (words)
                ch == '6' or ch == '7' or ch == '8' or ch == '9' or ch == '0' or
                ch == ' ' or ch == "\'" then
                 ]]
-            if string.gsub(ch, "%A", "*") == "*" or string.len(ch) == 0 then
+            if string.gsub(ch, "%A", "*") == "*" --not a character
+               or string.len(ch) == 0 -- if only enter was the input, len is 0 
+               then
                 --This check for space, apostrophe, or number
                 -- Still need to if just hits enter
                 io.write("Invalid character, input new letter: ")
