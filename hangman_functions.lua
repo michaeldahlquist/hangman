@@ -72,10 +72,15 @@ end
 function gallow(num)
 --These are the graphics for the game. It prints the remaining number of moves
 --as well as the gallow. It is updated as the user makes incorrect guesses
-    for i = 1, 25 do
-        print() --add blank lines to keep the following at the bottom of shell
+    if pcall(function () os.execute("clear") end) then 
+        print()
+    else 
+        for i = 0, 30 do
+            print()
+        end
     end
-    --os.execute("clear")
+    print("This is the game of hangman!")
+    print()
     a = ""
     b = ""
     c = " "
@@ -141,6 +146,7 @@ function hangman (words)
         if string.gsub(string.sub(word,i,i), "%A", "*") == "*" then
             --this will show all non-letter characters in the word
             show_letter[i] = true
+            correct_ct = correct_ct + 1
         end
     end
 
