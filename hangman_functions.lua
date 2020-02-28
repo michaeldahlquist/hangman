@@ -189,7 +189,7 @@ function hangman (words)
                ch == '6' or ch == '7' or ch == '8' or ch == '9' or ch == '0' or
                ch == ' ' or ch == "\'" then
                 ]]
-            if string.gsub(ch, "%A", "*") == "*" or string.len(ch) < 1 then
+            if string.gsub(ch, "%A", "*") == "*" or string.len(ch) == 0 then
                 --This check for space, apostrophe, or number
                 -- Still need to if just hits enter
                 io.write("Invalid character, input new letter: ")
