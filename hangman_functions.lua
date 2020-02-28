@@ -8,33 +8,39 @@ Program Description: These are the functions for the game of hangman.
                      described within itself.
 --]]
 
-function add_words_to_file(file_name, this_table)
-    io.write("Would you like to add any words to "..file_name.." ? : ")
+function add_words_to_file(file_name)
+--this function takes in two parameters, a string that is the file_name of 
+--the destination file.
+--this function:
+--  a) prompts user whether they would like to add words to the file
+--  b) takes in words from user, appends to front of table, and then
+--     inserts entire table into file_name
+    file_table = get_lines(file_name)
+    io.write("Would you like to add any words to "..file_name.." ? (Y/N): ")
     ans = io.read("*line")
     ans = string.upper( string.sub(ans,1,1) )
     if ans == 'Y' then
         print("Please enter as many words as you like, seperating them by a new line.")
         print("To terminate, enter *")
 
-        add_word = ' '
-        counter = 1
+        counter = 1 --decrements before first word add i.e., first word at table[0]
         io.write("Word: ")
-        add_word = io.read("*line")
-        while not (add_word  == '*') do
+        add_word = io.read("*line") --read first word
+        while not (add_word  == '*') do --stop loop when "*"
             counter = counter - 1
-            this_table[counter] = add_word
+            file_table[counter] = add_word
             io.write("Word: ")
             add_word = io.read("*line")
         end
 
-        local file = io.open(file_name, "w+")
-        io.output(file)
-        for i = 0, counter, -1 do
-            io.write(this_table[i]..'\n')
+        local file = io.open(file_name, "w+") --open file
+        io.output(file) --set output to file
+        for i = 0, counter, -1 do --write words added
+            io.write(file_table[i]..'\n')
         end
 
-        for i = 1, #this_table do
-            io.write(this_table[i]..'\n')
+        for i = 1, #file_table do --write original words
+            io.write(file_table[i]..'\n')
         end
         print("normal table finished")
         file:close()
@@ -48,8 +54,6 @@ end
 
 
 function get_lines(file_name)
---A portion of this code was inspired by:
---https://stackoverflow.com/questions/11201262/how-to-read-data-from-a-file-in-lua
 --get_lines(file_name) returns a table and count of all the lines in file_name
 --does not include return characters
     new_table = {}
@@ -61,6 +65,8 @@ function get_lines(file_name)
     end
     file:close()
     return new_table
+--A portion of this code was inspired by:
+--https://stackoverflow.com/questions/11201262/how-to-read-data-from-a-file-in-lua
 end
 
 function gallow(num)
