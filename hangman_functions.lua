@@ -134,7 +134,8 @@ function hangman (words)
     show_letter = {} --better name for this variable??
     for i = 1, string.len(word) do --this initalized them to false
         show_letter[i] = false
-        if string.sub(word,i,i) == "\'" then
+        if string.gsub(string.sub(word,i,i), "%A", "*") == "*" then
+            --this will show all non-letter characters in the word
             show_letter[i] = true
         end
     end
