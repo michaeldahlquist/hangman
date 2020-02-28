@@ -48,7 +48,7 @@ else
     print("Thanks for playing!")
 end
 
-add_words_to_file("dict2.txt",words)
+add_words_to_file(file_name)
 
 
 --BONUS TODO:
