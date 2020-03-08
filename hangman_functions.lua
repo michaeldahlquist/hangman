@@ -129,20 +129,20 @@ function hangman (words)
     --This section finds a random index of the table, meaning the word is randomly picked.
     math.randomseed(os.time()) --initalize random seed with os.time()
     random_index = math.random(1,#words) -- #words => size of words
-    word = words[random_index]
+    word = words[random_index] --get word from table
 
     --Declare an empty table that will store the users guesses.
     letters_guessed = {}
 
     wrong_ct = 0 --number of times user guessed wrong
     correct_ct = 0--number of times user guessed correctly
-    word = words[random_index]
 
     --This initializes each letter of the word to false as a way to test if the
     --user inputs a correct letter later in the code.
-    show_letter = {} --better name for this variable??
+    show_letter = {} --table of bools, whether letter should be shown or not
     for i = 1, string.len(word) do --this initalized them to false
         show_letter[i] = false
+        --true if character i is not a letter
         if string.gsub(string.sub(word,i,i), "%A", "*") == "*" then
             --this will show all non-letter characters in the word
             show_letter[i] = true
@@ -153,7 +153,7 @@ function hangman (words)
     --This loop is what runs guessing portion of the game
     while wrong_ct < 6 and correct_ct < string.len(word) do
     --this while loop runs until the man is hanged or the user gets the word.
-        gallow(wrong_ct)
+        gallow(wrong_ct) --gallow function prints current hanging state
         io.write("Your word is:\n")
         for i = 1, string.len(word) do --prints underscore for hidden letters and
             if show_letter[i] then     --prints the letters if guessed correctly
@@ -163,7 +163,7 @@ function hangman (words)
             end
         end
         print()
-        print_wrong(letters_guessed, wrong_ct)
+        print_wrong(letters_guessed, wrong_ct) --prints wrong letters
         print()
 
         --This section of code takes users guesses and checks whether a wrong input
