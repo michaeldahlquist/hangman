@@ -160,6 +160,8 @@ function hangman (words)
     while wrong_ct < 6 and correct_ct < string.len(word) do
 
         io.write("THE WORD IS "..word)
+        --^^ for error checking purposes
+
     --this while loop runs until the man is hanged or the user gets the word.
         gallow(wrong_ct) --gallow function prints current hanging state
         io.write("Your word is:\n")
