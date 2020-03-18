@@ -61,7 +61,13 @@ function get_lines(file_name)
     local file = io.open(file_name, "rb")
     for line in io.lines(file_name) do
         count = count + 1
-        new_table[count] = string.sub(line, 1, string.len(line)-1)
+        --fixes formatting issues
+        line = string.gsub(line, "%A", "*")
+        if string.sub(line,string.len(line),string.len(line)) == "*" then
+            line = string.sub(line,1,string.len(line)-1)
+        end
+        new_table[count] = line
+        --new_table[count] = string.sub(line, 1, string.len(line))
     end
     file:close()
     return new_table
@@ -122,7 +128,7 @@ function hangman (words)
 --that is a table of words, indexed 1 through n number of words. A random
 --word is selected and the user must guess the letters in the word, losing
 --at the sixth incorrect guess. This function returns two boolean values,
---whether the user wants to play_again, or if the game_won.
+--whether the user wants to play_again, and if the game_won.
 
     --START THE GAME OF HANGMAN:
 
@@ -152,6 +158,8 @@ function hangman (words)
 
     --This loop is what runs guessing portion of the game
     while wrong_ct < 6 and correct_ct < string.len(word) do
+
+        io.write("THE WORD IS "..word)
     --this while loop runs until the man is hanged or the user gets the word.
         gallow(wrong_ct) --gallow function prints current hanging state
         io.write("Your word is:\n")
