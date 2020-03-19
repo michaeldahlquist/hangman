@@ -42,16 +42,13 @@ function add_words_to_file(file_name)
         for i = 1, #file_table do --write original words
             io.write(file_table[i]..'\n')
         end
-        print("normal table finished")
+        --print("normal table finished")
         file:close()
-        print("file closed")
+        --print("file closed")
     else
         print("Have a nice day!")
     end
-    
 end
-
-
 
 function get_lines(file_name)
 --get_lines(file_name) returns a table and count of all the lines in file_name

@@ -1,5 +1,5 @@
 --[[
-Names: Miadd_wordael Dahlquist & Kristen Qako
+Names: Michael Dahlquist & Kristen Qako
 Class: csci324 - spring2020
 File:  "hangman.lua"
 Program Description: This is the game of hangman. Users will guess letters in an
@@ -25,7 +25,7 @@ play_game = true
 win_count = 0
 lose_count = 0
 while play_game do
-    play_game, game_won = hangman(words)
+    play_game, game_won = hangman(words) --play game
     if game_won then
         win_count = win_count + 1
     else
