@@ -59,9 +59,10 @@ function get_lines(file_name)
     for line in io.lines(file_name) do
         count = count + 1
         --fixes formatting issues
-        line = string.gsub(line, "%A", "*")
-        if string.sub(line,string.len(line),string.len(line)) == "*" then
-            line = string.sub(line,1,string.len(line)-1)
+        line1 = line
+        line1 = string.gsub(line1, "%A", "*")
+        if string.sub(line1,string.len(line1),string.len(line1)) == "*" then
+            line = string.sub(line,1,string.len(line1)-1)
         end
         new_table[count] = line
         --new_table[count] = string.sub(line, 1, string.len(line))
@@ -143,10 +144,11 @@ function hangman (words)
     --This initializes each letter of the word to false as a way to test if the
     --user inputs a correct letter later in the code.
     show_letter = {} --table of bools, whether letter should be shown or not
-    for i = 1, string.len(word) do --this initalized them to false
+    word1 = word
+    for i = 1, string.len(word1) do --this initalized them to false
         show_letter[i] = false
         --true if character i is not a letter
-        if string.gsub(string.sub(word,i,i), "%A", "*") == "*" then
+        if string.gsub(string.sub(word1,i,i), "%A", "*") == "*" then
             --this will show all non-letter characters in the word
             show_letter[i] = true
             correct_ct = correct_ct + 1
