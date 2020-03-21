@@ -120,6 +120,29 @@ function print_wrong(letters_guessed, wrong_ct)
     end
 end
 
+function make_show()
+    this_table = {}
+    this_table[1] = true
+    this_table[2] = false
+    this_table[3] = true
+    this_table[4] = false
+    return this_table
+end
+
+function hint(show_letter)
+--This function is for extra credit.
+    io.write("Which index [1,"..#show_letter.."] would you like to show?: ")
+    num = io.read("*number")
+    
+    while  num < 1 or num > #show_letter or show_letter[num]
+        do
+            io.write("Sorry, I can't reveal that...enter another: ")
+            num = io.read("*number")
+        
+    end
+    show_letter[num] = true
+end
+
 function hangman (words)
 --This function plays the entire game of hangman. It take in one parameter
 --that is a table of words, indexed 1 through n number of words. A random
@@ -153,11 +176,19 @@ function hangman (words)
         end
     end
 
+    hints = 0
+
     --This loop is what runs guessing portion of the game
     while wrong_ct < 6 and correct_ct < string.len(word) do
 
         io.write("THE WORD IS "..word)
         --^^ for error checking purposes
+
+        --total chars displayed:
+        show_count = 0
+
+        --total chars still hidden:
+        hidden_count = 0
 
     --this while loop runs until the man is hanged or the user gets the word.
         gallow(wrong_ct) --gallow function prints current hanging state
@@ -165,19 +196,34 @@ function hangman (words)
         for i = 1, string.len(word) do --prints underscore for hidden letters and
             if show_letter[i] then     --prints the letters if guessed correctly
                 io.write(string.sub(word,i,i).." ")--we would print the ith character
+                show_count = show_count + 1
             else
                 io.write("_ ") --print underscore's for each letter not guessed.
+                hidden_count = hidden_count + 1
             end
         end
         print()
         print_wrong(letters_guessed, wrong_ct) --prints wrong letters
         print()
 
+        --This percentage [0,100] is the max percent shown where the player will have the option
+        --to show a hint
+        percent_hint = 25
+        
+        if 100*show_count/string.len(word) <= 25 then
+            hint_allowed = true
+        else 
+            hint_allowed = false
+        end
+        
         --This section of code takes users guesses and checks whether a wrong input
         --has been guessed before. We decided that letters that have been shown
         --should not display that output and we just continue to show the current game.
+        if hint_allowed then
+            io.write("You may enter '#' for a hint...\n")
+        end
         io.write("Please guess a letter: ")
-        ch = io.read("*line"); --reads the entire line for inital guess
+        ch = io.read("*line") --reads the entire line for inital guess
         ch = string.upper(string.sub(ch,1,1) ) --take upper of first character
         char_found = false;
         char_unique = false;
@@ -201,13 +247,25 @@ function hangman (words)
                     char_unique = false
                 end
             end
-            --[[
-            if ch == '1' or ch == '2' or ch == '3' or ch == '4' or ch == '5' or
-               ch == '6' or ch == '7' or ch == '8' or ch == '9' or ch == '0' or
-               ch == ' ' or ch == "\'" then
-                ]]
+            --[[]]
+            if ch == '#' then
+                --user wants a hint
+                if hint_allowed then 
+                    hint(show_letter)
+                    correct_ct = correct_ct + 1
+                    char_found = true
+                    hints = hints + 1
+                else
+                    io.write("Hints not allowed! Input your guess: ")
+                    ch = io.read("*line");
+                    ch = string.upper( string.sub(ch,1,1) )
+                    char_unique = false
+                end
+            end
+            --]]
             if string.gsub(ch, "%A", "*") == "*" --not a character
                or string.len(ch) == 0 -- if only enter was the input, len is 0 
+               and not ch == '#'
                then
                 --This check for space, apostrophe, or number
                 -- Still need to if just hits enter
