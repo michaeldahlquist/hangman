@@ -132,6 +132,7 @@ end
 
 function hint(show_letter)
 --This function is for extra credit.
+--This function takes in the table of the letters shown 
     io.write("Which index [1,"..#show_letter.."] would you like to show?: ")
     num = io.read("*number")
     
@@ -183,12 +184,11 @@ function hangman (words)
     --This loop is what runs guessing portion of the game
     while wrong_ct < 6 and correct_ct < string.len(word) do
 
+        --DISPLAY WORD FOR ERROR CHECKING:
         io.write("THE WORD IS "..word)
-        --^^ for error checking purposes
 
         --total chars displayed:
         show_count = 0
-
         --total chars still hidden:
         hidden_count = 0
 
