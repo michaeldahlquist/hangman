@@ -212,7 +212,7 @@ function hangman (words)
         --to show a hint
         percent_hint = 25
         
-        if 100*show_count/string.len(word) <= 25 then
+        if 100*show_count/string.len(word) <= percent_hint then
             hint_allowed = true
         else 
             hint_allowed = false
