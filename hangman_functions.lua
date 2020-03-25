@@ -315,12 +315,12 @@ function hangman (words)
 
     if wrong_ct < 6 then
         game_won = true
-        print("Congratulations, you guessed the word!")
+        print("Congratulations, you guessed the word!\n")
     else
         game_won = false
-        print("Sorry, you lost! The word was: ", word)
+        print("Sorry, you lost! The word was: " ..word.."\n")
     end
-    print()
+
 
     --END THE GAME OF HANGMAN
 
