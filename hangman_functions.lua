@@ -311,8 +311,7 @@ function hangman (words)
     end
     print()
     print_wrong(letters_guessed, wrong_ct)
-    print()
-    print()
+    print("\n")
 
     if wrong_ct < 6 then
         game_won = true
