@@ -222,7 +222,7 @@ function hangman (words)
         --has been guessed before. We decided that letters that have been shown
         --should not display that output and we just continue to show the current game.
         if hint_allowed then
-            io.write("You may enter '#' for a hint...\n")
+            print("You may enter '#' for a hint...")
         end
         io.write("Please guess a letter: ")
         ch = io.read("*line") --reads the entire line for inital guess
