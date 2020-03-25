@@ -10,6 +10,9 @@ Program Description: This is the game of hangman. Users will guess letters in an
                      Good luck.
 --]]
 
+--Get OS time for random seed.
+os_time = os.time()
+
 -- add functions from hangman_functions.lua
 dofile("hangman_functions.lua")
 
@@ -25,7 +28,7 @@ play_game = true
 win_count = 0
 lose_count = 0
 while play_game do
-    play_game, game_won = hangman(words) --play game
+    play_game, game_won = hangman(words, os_time) --play game
     if game_won then
         win_count = win_count + 1
     else

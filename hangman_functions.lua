@@ -145,7 +145,7 @@ function hint(show_letter)
     show_letter[num] = true
 end
 
-function hangman (words)
+function hangman (words, os_time)
 --This function plays the entire game of hangman. It take in one parameter
 --that is a table of words, indexed 1 through n number of words. A random
 --word is selected and the user must guess the letters in the word, losing
@@ -155,7 +155,7 @@ function hangman (words)
     --START THE GAME OF HANGMAN:
 
     --This section finds a random index of the table, meaning the word is randomly picked.
-    math.randomseed(os.time()) --initalize random seed with os.time()
+    math.randomseed(os_time) --initalize random seed with os.time()
     random_index = math.random(1,#words) -- #words => size of words
     word = words[random_index] --get word from table
 
