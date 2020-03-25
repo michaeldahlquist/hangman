@@ -133,14 +133,14 @@ end
 function hint(show_letter)
 --This function is for extra credit.
 --This function takes in the table of the letters shown 
+--It prompts the user to chose an index of the word to show [1,n]
+--There is a while loop to check that index is valid and has not been shown.
+--It then modifies the show_letter table at character k to be true.
     io.write("Which index [1,"..#show_letter.."] would you like to show?: ")
     num = io.read("*number")
-    
-    while  num < 1 or num > #show_letter or show_letter[num]
-        do
+    while  num < 1 or num > #show_letter or show_letter[num] do
             io.write("Sorry, I can't reveal that...enter another: ")
             num = io.read("*number")
-        
     end
     show_letter[num] = true
 end
