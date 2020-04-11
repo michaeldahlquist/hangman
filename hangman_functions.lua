@@ -51,7 +51,7 @@ function add_words_to_file(file_name)
 end
 
 function get_lines(file_name)
---get_lines(file_name) returns a table and count of all the lines in file_name
+--get_lines(file_name) returns a table of all the lines in file_name
 --does not include return characters
     new_table = {}
     count = 0
