@@ -10,9 +10,7 @@ Program Description: This is the game of hangman. Users will guess letters in an
                      Good luck.
 --]]
 
---Get OS time for random seed.
-os_time = os.time()
-math.randomseed(os_time) --initalize random seed with os.time()
+math.randomseed(os.time()) --initalize random seed with os.time()
 
 -- add functions from hangman_functions.lua
 dofile("hangman_functions.lua")
