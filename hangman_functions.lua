@@ -48,6 +48,7 @@ function add_words_to_file(file_name)
     else
         print("Have a nice day!")
     end
+    --“Lua 5.3 Reference Manual.” Lua 5.3 Reference Manual - Contents, www.lua.org/manual/5.3/.
 end
 
 function get_lines(file_name)
@@ -69,8 +70,8 @@ function get_lines(file_name)
     end
     file:close()
     return new_table
---A portion of this code was inspired by:
---https://stackoverflow.com/questions/11201262/how-to-read-data-from-a-file-in-lua
+--Kiers, Bart. “How to Read Data from a File in Lua.” 
+--Stack Overflow, 26 June 2012, stackoverflow.com/questions/11201262/how-to-read-data-from-a-file-in-lua.
 end
 
 function gallow(num)
@@ -119,15 +120,6 @@ function print_wrong(letters_guessed, wrong_ct)
     for i = 0, wrong_ct-1 do
         io.write(letters_guessed[i].." ")
     end
-end
-
-function make_show()
-    this_table = {}
-    this_table[1] = true
-    this_table[2] = false
-    this_table[3] = true
-    this_table[4] = false
-    return this_table
 end
 
 function hint(show_letter)
@@ -319,8 +311,6 @@ function hangman (words)
         game_won = false
         print("Sorry, you lost! The word was: " ..word.."\n")
     end
-
-
     --END THE GAME OF HANGMAN
 
     --Here we prompt if the game should be played again
